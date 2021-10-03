@@ -1,0 +1,49 @@
+{
+  "eventID": "95bdde659a59c9cfa17ee3f325b4dab9",
+  "eventName": "INSERT",
+  "eventVersion": "1.1",
+  "eventSource": "aws:dynamodb",
+  "awsRegion": "ap-southeast-2",
+  "dynamodb": {
+    "ApproximateCreationDateTime": 1633261837,
+    "Keys": {
+      "sortKey": {
+        "S": "11:50:37_048123456"
+      },
+      "partitionKey": {
+        "S": "2021-10-03"
+      }
+    },
+    "NewImage": {
+      "sortKey": {
+        "S": "11:50:37_048123456"
+      },
+      "partitionKey": {
+        "S": "2021-10-03"
+      },
+      "preferredTime": {
+        "S": "6 PM"
+      },
+      "mobile": {
+        "S": "048123456"
+      },
+      "name": {
+        "S": "Dusan"
+      },
+      "enquiry": {
+        "S": "bla"
+      },
+      "yogaClass": {
+        "S": "groups-online"
+      },
+      "email": {
+        "S": "dusan@test.com"
+      }
+    },
+    "SequenceNumber": "334500000000025692253165",
+    "SizeBytes": 186,
+    "StreamViewType": "NEW_IMAGE"
+  },
+  "eventSourceARN": "arn:aws:dynamodb:ap-southeast-2:564737888276:table/Enquiry/stream/2021-10-03T11:09:26.179"
+}
+

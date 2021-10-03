@@ -8,20 +8,28 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "synth": "npm run build && cdk synth --profile dusan",
+    "deploy": "npm run build && cdk deploy --profile dusan",
+    "synth-local": "npm run build && cdk synth --no-staging > template.yaml --profile dusan",
+    "invoke": "npm run synth-local && sam local invoke EnquiryConsumerEnquiryConsumerHandler0234E6E8 -e test/stub/enquiryPayload.json --profile dusan"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.123.0",
+    "@aws-cdk/aws-lambda": "^1.123.0",
+    "@aws-cdk/aws-lambda-event-sources": "^1.123.0",
+    "@aws-cdk/aws-s3": "^1.123.0",
+    "@aws-cdk/core": "1.123.0",
+    "@types/aws-lambda": "^8.10.83",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
+    "aws-cdk": "1.123.0",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
-    "aws-cdk": "1.123.0",
     "ts-node": "^9.0.0",
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.123.0",
+    "aws-sdk": "^2.999.0",
     "source-map-support": "^0.5.16"
   }
 }
