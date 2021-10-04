@@ -56,7 +56,7 @@ export class EnquiryConsumer {
     }
 
     private static toSubject(enquiry: Enquiry): string {
-        return `New ${enquiry.yogaClass} enquiry from ${enquiry.mobile} ${(enquiry.name ? enquiry.name : '')}`;
+        return `[YOGA ENQUIRY] ${enquiry.yogaClass} for ${enquiry.mobile} ${(enquiry.name ? enquiry.name : '')}`;
     }
 
     private static toData(enquiry: Enquiry): string {
