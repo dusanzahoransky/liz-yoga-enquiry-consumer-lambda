@@ -24,7 +24,7 @@ export class EnquiryConsumer {
             email: newImage.email.S!!,
         }
 
-        const fromTo = 'dusan.sec.acc@gmail.com';
+        const fromTo = 'elizabethneirar@gmail.com';
         const subject = EnquiryConsumer.toSubject(enquiry);
         const data = EnquiryConsumer.toData(enquiry);
 
