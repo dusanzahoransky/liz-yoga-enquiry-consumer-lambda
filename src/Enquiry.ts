@@ -3,9 +3,10 @@ import {EnquiryDto} from "./EnquiryDto";
 export enum YogaClass {
     'groups-in-person' = 'groups-in-person',
     'groups-online' = 'groups-online',
-    'poses-online' = 'poses-online',
     'private-in-person' = 'private-in-person',
     'private-online' = 'private-online',
+    'workshop-in-person' = 'workshop-in-person',
+    'workshop-online' = 'workshop-online',
 }
 
 export interface Enquiry extends EnquiryDto{

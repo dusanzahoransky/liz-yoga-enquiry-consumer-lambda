@@ -1,9 +1,10 @@
 export enum YogaClass {
     'groups-in-person',
     'groups-online',
-    'poses-online',
     'private-in-person',
-    'private-online'
+    'private-online',
+    'workshop-in-person',
+    'workshop-online',
 }
 
 export interface EnquiryDto {
