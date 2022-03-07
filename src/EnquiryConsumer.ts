@@ -16,12 +16,13 @@ export class EnquiryConsumer {
         const enquiry: Enquiry = {
             sortKey: newImage.sortKey.S!!,
             partitionKey: newImage.partitionKey.S!!,
-            preferredTime: newImage.preferredTime.S!!,
-            mobile: newImage.mobile.S!!,
-            name: newImage.name.S!!,
-            enquiry: newImage.enquiry.S!!,
-            yogaClass: newImage.yogaClass.S!! as YogaClass,
-            email: newImage.email.S!!,
+            preferredTime: newImage.preferredTime ? newImage.preferredTime.S : undefined,
+            mobile: newImage.mobile ? newImage.mobile.S!! : '',
+            name: newImage.name ? newImage.name.S!! : undefined,
+            enquiry: newImage.enquiry ? newImage.enquiry.S!! : '',
+            // @ts-ignore FIXME
+            yogaClass: newImage.yogaClass ? newImage.yogaClass.S!! as YogaClass : undefined,
+            email: newImage.email ? newImage.email.S!! : undefined,
         }
 
         const fromTo = 'elizabethneirar@gmail.com';
@@ -63,10 +64,10 @@ export class EnquiryConsumer {
         return `<html lang="en">
             <body>
                 <p>yogaClass: ${enquiry.yogaClass}</p>
-                <p>name: ${enquiry.name}</p>
+                <p>name: ${enquiry.name ? enquiry.name: ''}</p>
                 <p>mobile: ${enquiry.mobile}</p>
-                <p>email: ${enquiry.email}</p>
-                <p>preferredTime: ${enquiry.preferredTime}</p>
+                <p>email: ${enquiry.email ? enquiry.email : ''}</p>
+                <p>preferredTime: ${enquiry.preferredTime? enquiry.preferredTime: ''}</p>
                 <p>enquiry: ${enquiry.enquiry}</p>
                 
                 <div style="display:none;">
