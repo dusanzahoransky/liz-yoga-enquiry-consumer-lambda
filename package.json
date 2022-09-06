@@ -14,11 +14,6 @@
     "invoke": "npm run synth-local && sam local invoke EnquiryConsumerEnquiryConsumerHandler0234E6E8 -e test/stub/enquiryPayload.json --profile dusan"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.123.0",
-    "@aws-cdk/aws-lambda": "^1.123.0",
-    "@aws-cdk/aws-lambda-event-sources": "^1.123.0",
-    "@aws-cdk/aws-s3": "^1.123.0",
-    "@aws-cdk/core": "1.123.0",
     "@types/aws-lambda": "^8.10.83",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",

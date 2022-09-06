@@ -1,20 +1,18 @@
-import * as core from "@aws-cdk/core"
-import * as lambda from "@aws-cdk/aws-lambda"
-import * as s3 from "@aws-cdk/aws-s3"
-import * as iam from "@aws-cdk/aws-iam"
+import {Construct} from "constructs";
+import {aws_iam, aws_lambda, aws_s3} from "aws-cdk-lib";
 
-export class EnquiryConsumerConstruct extends core.Construct {
+export class EnquiryConsumerConstruct extends Construct {
 
-    private enquiryTableStreamArn = 'arn:aws:dynamodb:ap-southeast-2:564737888276:table/Enquiry/stream/2021-10-03T11:09:26.179'
+    private enquiryTableStreamArn = 'arn:aws:dynamodb:ap-southeast-2:473300111098:table/Enquiry/stream/2022-09-06T14:49:04.895'
 
-    constructor(scope: core.Construct, id: string) {
+    constructor(scope: Construct, id: string) {
         super(scope, id)
 
-        const bucket = new s3.Bucket(this, "EnquiryConsumer")
+        const bucket = new aws_s3.Bucket(this, "EnquiryConsumer")
 
-        const handler = new lambda.Function(this, "EnquiryConsumerHandler", {
-            runtime: lambda.Runtime.NODEJS_14_X,
-            code: lambda.Code.fromAsset("src"),
+        const handler = new aws_lambda.Function(this, "EnquiryConsumerHandler", {
+            runtime: aws_lambda.Runtime.NODEJS_14_X,
+            code: aws_lambda.Code.fromAsset("src"),
             handler: "EnquiryConsumerHandler.main",
             environment: {
                 BUCKET: bucket.bucketName,
@@ -26,17 +24,17 @@ export class EnquiryConsumerConstruct extends core.Construct {
         handler.addEventSourceMapping('EnquiryTableStream', {
                 batchSize: 1,
                 eventSourceArn: this.enquiryTableStreamArn,
-                startingPosition: lambda.StartingPosition.LATEST,
+                startingPosition: aws_lambda.StartingPosition.LATEST,
         })
 
-        handler.addToRolePolicy(new iam.PolicyStatement({
+        handler.addToRolePolicy(new aws_iam.PolicyStatement({
             actions: ['dynamodb:DescribeStream', 'dynamodb:GetRecords', 'dynamodb:GetShardIterator', 'dynamodb:ListStreams', 'dynamodb:ListShards'],
             resources: [this.enquiryTableStreamArn]
         }))
-        handler.addToRolePolicy(new iam.PolicyStatement({
+        handler.addToRolePolicy(new aws_iam.PolicyStatement({
             actions: ['ses:SendEmail'],
             resources: ['*'],
-            effect: iam.Effect.ALLOW,
+            effect: aws_iam.Effect.ALLOW,
         }))
     }
 }

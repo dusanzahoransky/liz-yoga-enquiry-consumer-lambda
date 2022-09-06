@@ -9,9 +9,10 @@ async function handleRecord(record: DynamoDBRecord) {
     try{
         await new EnquiryConsumer().processRecord(record)
     } catch (e) {
+        const error = e as Error
         if(record.dynamodb){
-            console.log(`Fail to process ${record.eventID}: ${JSON.stringify(record.dynamodb.NewImage)}`, e, e.stack)
+            console.log(`Fail to process ${record.eventID}: ${JSON.stringify(record.dynamodb.NewImage)}`, error, error.stack)
         }
-        console.log(`Fail to process ${record.eventID}`, e, e.stack)
+        console.log(`Fail to process ${record.eventID}`, error, error.stack)
     }
 }
